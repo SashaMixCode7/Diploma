@@ -1,0 +1,157 @@
+.footer-articles {
+  width: 100%;
+  background: #282828;
+  padding: 60px 0 80px;
+  /*margin-top: 40px;*/
+}
+
+.articles-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2cm;
+}
+
+.articles-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.articles-header h3 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #800020 ;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.header-decoration {
+  width: 60px;
+  height: 3px;
+  background: #c2185b;
+  margin: 0 auto;
+}
+
+/* Сетка для 6 статей: 3 в строку, 2 строки */
+.articles-grid-two-rows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.article-card {
+  cursor: pointer;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.article-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 15cm;
+  overflow: hidden;
+}
+
+.article-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.article-card:hover .article-image {
+  transform: scale(1.05);
+}
+
+.article-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(194, 24, 91, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.article-card:hover .article-overlay {
+  opacity: 1;
+}
+
+.article-overlay span {
+  color: white;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border: 2px solid white;
+  border-radius: 40px;
+}
+
+.article-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.article-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c1810;
+  margin-bottom: 8px;
+}
+
+/* Заливка */
+.articles-black-section {
+  background: #282828; /* Сигнальный черный */
+  width: 100%;
+  margin-top: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .articles-container {
+    padding: 0 1cm;
+  }
+  
+  .article-image-wrapper {
+    height: 12cm;
+  }
+  
+  .article-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .articles-grid-two-rows {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .article-image-wrapper {
+    height: 10cm;
+  }
+  
+  .articles-container {
+    padding: 0 1cm;
+  }
+}
+
+@media (max-width: 480px) {
+  .articles-grid-two-rows {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

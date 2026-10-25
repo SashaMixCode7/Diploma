@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.auction-header {
+  background: #D4AF37; /* Old Gold */
+  width: 100%;
+  font-family: 'Georgia', 'Times New Roman', 'Playfair Display', serif;
+}
+
+/* Верхняя полоса 4 см */
+.header-top {
+  height: 4cm;
+  background: #D4AF37; /* Old Gold */
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2cm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Логотип */
+.logo-area {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo {
+  height: 160px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Название по центру */
+.title-area {
+  flex: 2;
+  text-align: center;
+}
+
+.auction-title {
+  font-family: 'Parisienne', 'Allura', 'Great Vibes', 'Petit Formal Script', cursive;
+  font-size: 50px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #2c1810; /* оставляем темный текст */
+  margin: 0;
+  text-transform: none;
+  font-style: italic;
+}
+
+/* Правая секция */
+.actions-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2); /* полупрозрачный для контраста */
+  border-radius: 30px;
+  padding: 5px 12px;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 150px;
+  font-family: 'Georgia', serif;
+  outline: none;
+  color: #2c1810;
+}
+
+.search-input::placeholder {
+  color: #2c1810;
+  opacity: 0.7;
+}
+
+.search-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  color: #2c1810;
+}
+
+.login-btn, .logout-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  padding: 8px 16px;
+  transition: color 0.3s;
+}
+
+.login-btn {
+  color: #2c1810;
+}
+
+.login-btn:hover {
+  color: #c2185b;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  font-size: 14px;
+  color: #2c1810;
+}
+
+.logout-btn {
+  color: #2c1810;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  color: #f44336;
+}
+
+.cart-btn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  color: #2c1810;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #c2185b;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+
+/* Тонкая линия */
+.header-divider {
+  height: 1px;
+  background: rgba(44, 24, 16, 0.2);
+  width: 100%;
+}
+
+/* Нижняя навигация */
+.header-bottom {
+  background: #ffd700; /* Золотой заливка */
+  padding: 15px 0;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Стили для навигационных ссылок */
+.nav-link {
+  background: transparent;
+  border: none;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #2c1810;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Эффект при наведении - меняем цвет на розовый */
+.nav-link:hover {
+  color: #c2185b !important;
+  background-color: rgba(194, 24, 91, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Активная ссылка */
+.nav-link.active {
+  color: #c2185b;
+  background-color: rgba(194, 24, 91, 0.15);
+}
+
+/* Декоративная линия под активной ссылкой */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: #c2185b;
+  border-radius: 2px;
+}
+
+/* Разделитель между ссылками */
+.nav-separator {
+  color: #2c1810;
+  opacity: 0.3;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0 4px;
+}
+
+/* Админ-ссылка - немного изменена для контраста с золотым фоном */
+.admin-link {
+  background: #2c1810;
+  color: #D4AF37 !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-link:hover {
+  background: #c2185b;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(194, 24, 91, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 1cm;
+  }
+  
+  .auction-title {
+    font-size: 40px;
+  }
+  
+  .nav-link {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+  
+  .search-input {
+    width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-top {
+    height: auto;
+    padding: 15px 0;
+  }
+  
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .header-bottom {
+    padding: 10px 0;
+  }
+  
+  .nav-container {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .nav-separator {
+    display: none;
+  }
+  
+  .nav-link {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  .nav-link:hover {
+    color: #c2185b !important;
+  }
+  
+  .admin-link {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+}

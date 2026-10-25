@@ -1,0 +1,104 @@
+.main-footer {
+  width: 100%;
+  background-color:  #808080; /* Темно-зеленый цвет */
+  margin-top: 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 2cm;
+  background-color:  #808080;
+  color: #eeeeee;
+  font-size: 14px;
+}
+
+/* Блок с текстом о компании */
+.footer-about {
+  flex: 2;
+  text-align: center;
+}
+
+.company-tagline {
+  margin: 0;
+  line-height: 1.5;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: #f5f5f5;
+}
+
+/* Блок с иконками социальных сетей */
+.footer-socials {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  flex-wrap: wrap; /* Добавьте эту строку */
+  min-width: 180px
+}
+
+.social-link {
+  color: #cccccc;
+  font-size: 28px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Эффект при наведении - розовый цвет как в Header */
+.social-link:hover {
+  color: #c2185b; /* Розовый цвет, как у кнопок в Header */
+  background-color: rgba(194, 24, 91, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 20px 1cm;
+  }
+  
+  .footer-about {
+    max-width: 100%;
+  }
+  
+  .footer-socials {
+    justify-content: center;
+  }
+  
+  .company-tagline {
+    font-size: 14px;
+  }
+  
+  .social-link {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-socials {
+    gap: 16px;
+  }
+  
+  .social-link {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+  }
+}

@@ -1,0 +1,170 @@
+.contacts-page {
+  position: relative;
+  min-height: calc(100vh - 120px);
+  background-color: #800020;
+  transform: translateY(-1px); /* Сдвигаем на 1 пиксель вверх */
+  margin-top: -1px; /* Дополнительный сдвиг */
+}
+
+/* Бордовые фоны по бокам */
+.contacts-left-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background-color: #800020;
+  z-index: 0;
+}
+
+.contacts-right-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15%;
+  height: 100%;
+  background-color: #800020;
+  z-index: 0;
+}
+
+/* Основной контент */
+.contacts-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 60px;
+  padding: 0 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Левая колонка с изображением */
+.contacts-image-col {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  padding: 40px 20px 40px 0;
+}
+
+.office-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+/* Правая колонка с информацией */
+.contacts-info-col {
+  flex: 1;
+  padding: 40px 0 40px 20px;
+}
+
+/* Блок информации */
+.info-block {
+  margin-bottom: 30px;
+}
+
+.info-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #800020;
+}
+
+.info-content {
+  color: #000000;
+}
+
+.info-address {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.info-details p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.info-details strong {
+  color: #800020;
+  font-weight: 600;
+}
+
+/* Разделитель между офисом и складом */
+.info-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #800020, transparent);
+  margin: 40px 0;
+}
+
+/* Стили для ссылок (если email/телефон кликабельны) */
+.info-email {
+  word-break: break-all;
+}
+
+.info-phone {
+  letter-spacing: 0.5px;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .contacts-left-bg,
+  .contacts-right-bg {
+    display: none;
+  }
+  
+  .contacts-content {
+    flex-direction: column;
+    margin: 20px;
+    gap: 30px;
+  }
+  
+  .contacts-image-col {
+    padding: 20px;
+    justify-content: center;
+  }
+  
+  .contacts-info-col {
+    padding: 0 20px 40px 20px;
+  }
+  
+  .office-image {
+    max-width: 100%;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .info-title {
+    font-size: 24px;
+  }
+  
+  .info-address {
+    font-size: 16px;
+  }
+  
+  .info-details p {
+    font-size: 14px;
+  }
+  
+  .contacts-content {
+    margin: 10px;
+    padding: 0 10px;
+  }
+}

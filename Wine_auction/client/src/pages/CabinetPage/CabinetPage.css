@@ -1,0 +1,699 @@
+body:has(.cabinet-page) {
+  background-color: #800020 !important;
+}
+
+#root:has(.cabinet-page) {
+  background-color: #800020 !important;
+}
+.cabinet-page {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
+  background-color: #282828;
+  min-height: calc(100vh - 200px);
+}
+
+/* Бордовая заливка по бокам */
+.cabinet-page::before,
+.cabinet-page::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  width: calc((100% - 1240px) / 2);
+  height: 100vh;
+  background-color: #800020;
+  z-index: -1;
+}
+
+.cabinet-page::before {
+  left: 0;
+}
+
+.cabinet-page::after {
+  right: 0;
+}
+
+/* Шапка кабинета */
+.cabinet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 25px 35px;
+  background: linear-gradient(135deg, #800020 0%, #5a0016 100%);
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-left h1 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.balance-card {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.balance-label {
+  font-size: 14px;
+  opacity: 0.9;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.balance-amount {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Табы навигации */
+.cabinet-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #404040;
+  padding-bottom: 5px;
+}
+
+.cabinet-tabs button {
+  padding: 12px 24px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+  color: #a0a0a0;
+  position: relative;
+}
+
+.cabinet-tabs button:hover {
+  color: #800020;
+}
+
+.cabinet-tabs button.active {
+  color: #800020;
+  background: transparent;
+}
+
+.cabinet-tabs button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #800020;
+  border-radius: 2px;
+}
+
+/* Основной контент */
+.cabinet-content {
+  background: #1a1a1a;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #404040;
+}
+
+/* Секции внутри табов */
+.profile-tab,
+.active-bids-tab,
+.won-lots-tab,
+.history-tab,
+.transactions-tab {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== ПРОФИЛЬ (ПЕРЕДЕЛАННЫЙ) ========== */
+.profile-tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* Левая колонка с формой профиля */
+.profile-view,
+.profile-edit {
+  background: #282828;
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid #404040;
+}
+
+.profile-field {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #404040;
+}
+
+.profile-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #800020;
+  margin-bottom: 8px;
+}
+
+.profile-field p {
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 500;
+}
+
+.edit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #800020;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.edit-btn:hover {
+  background: #a00028;
+  transform: translateY(-1px);
+}
+
+/* Форма редактирования профиля */
+.profile-edit .form-group {
+  margin-bottom: 20px;
+}
+
+.profile-edit label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #800020;
+  margin-bottom: 8px;
+}
+
+.profile-edit input,
+.profile-edit textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: #1a1a1a;
+  border: 1.5px solid #404040;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.profile-edit input:focus,
+.profile-edit textarea:focus {
+  outline: none;
+  border-color: #800020;
+  box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.2);
+}
+
+.profile-edit textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.form-actions button:first-child {
+  flex: 1;
+  padding: 12px;
+  background: #800020;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-actions button:first-child:hover {
+  background: #a00028;
+}
+
+.form-actions button:last-child {
+  flex: 1;
+  padding: 12px;
+  background: #404040;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-actions button:last-child:hover {
+  background: #505050;
+}
+
+/* Правая колонка с пополнением баланса */
+.deposit-section {
+  background: #282828;
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid #404040;
+  height: fit-content;
+}
+
+.deposit-section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 25px 0;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #800020;
+}
+
+.deposit-controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.deposit-controls input {
+  flex: 1;
+  padding: 14px;
+  background: #1a1a1a;
+  border: 1.5px solid #404040;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+}
+
+.deposit-controls input:focus {
+  outline: none;
+  border-color: #800020;
+}
+
+.deposit-controls button {
+  padding: 14px 28px;
+  background: #800020;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.deposit-controls button:hover {
+  background: #a00028;
+  transform: translateY(-1px);
+}
+
+.deposit-hint {
+  font-size: 12px;
+  color: #888;
+  margin: 12px 0 0 0;
+}
+
+/* ========== АКТИВНЫЕ СТАВКИ ========== */
+.active-bids-tab h2,
+.won-lots-tab h2,
+.history-tab h2,
+.transactions-tab h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 25px 0;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #800020;
+}
+
+.bids-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.bid-card {
+  border: 1px solid #404040;
+  border-radius: 14px;
+  padding: 20px;
+  background: #282828;
+  transition: all 0.3s ease;
+}
+
+.bid-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: #800020;
+}
+
+.bid-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+}
+
+.bid-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  margin-bottom: 12px;
+}
+
+.bid-info span {
+  color: #888;
+  font-size: 14px;
+}
+
+.bid-info strong {
+  font-size: 20px;
+  color: #800020;
+}
+
+.leader-badge {
+  background: #800020;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.max-bid-info {
+  font-size: 13px;
+  color: #888;
+  margin: 10px 0;
+  padding: 8px;
+  background: #1a1a1a;
+  border-radius: 8px;
+}
+
+.bid-card button {
+  width: 100%;
+  padding: 10px;
+  background: #800020;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.bid-card button:hover {
+  background: #a00028;
+}
+
+/* ========== ВЫИГРАННЫЕ ЛОТЫ ========== */
+.won-lots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.won-lot-card {
+  display: flex;
+  gap: 15px;
+  border: 1px solid #404040;
+  border-radius: 14px;
+  padding: 15px;
+  background: #282828;
+  transition: all 0.3s ease;
+}
+
+.won-lot-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.lot-image {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background: #1a1a1a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lot-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.placeholder {
+  font-size: 40px;
+}
+
+.lot-details {
+  flex: 1;
+}
+
+.lot-details h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.lot-details .price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #800020;
+  margin: 0 0 10px 0;
+}
+
+.pay-btn {
+  width: 100%;
+  padding: 8px;
+  background: #800020;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+  background: #a00028;
+}
+
+/* ========== ИСТОРИЯ СТАВОК И ТРАНЗАКЦИИ ========== */
+.history-table,
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th,
+.transactions-table th {
+  text-align: left;
+  padding: 15px 12px;
+  background: #1a1a1a;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #800020;
+  border-bottom: 2px solid #800020;
+}
+
+.history-table td,
+.transactions-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #404040;
+  color: #ffffff;
+}
+
+.history-table tr:hover,
+.transactions-table tr:hover {
+  background: #1a1a1a;
+}
+
+.history-table a {
+  color: #800020;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.history-table a:hover {
+  text-decoration: underline;
+}
+
+.positive {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.negative {
+  color: #f44336;
+  font-weight: 600;
+}
+
+.win {
+  color: #4caf50;
+  font-weight: 700;
+}
+
+.loss {
+  color: #f44336;
+  font-weight: 700;
+}
+
+/* Сообщения об ошибках и пустые состояния */
+.error-message {
+  background: #1a1a1a;
+  color: #f44336;
+  padding: 14px 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border-left: 4px solid #f44336;
+  font-size: 14px;
+}
+
+.empty {
+  text-align: center;
+  color: #888;
+  padding: 60px 40px;
+  font-size: 16px;
+  background: #282828;
+  border-radius: 16px;
+  border: 1px solid #404040;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+  font-size: 18px;
+  color: #800020;
+  background: #282828;
+  border-radius: 16px;
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 1024px) {
+  .cabinet-page::before,
+  .cabinet-page::after {
+    display: none;
+  }
+  
+  .profile-tab {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cabinet-page {
+    padding: 15px;
+  }
+  
+  .cabinet-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .header-left {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cabinet-tabs button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .cabinet-content {
+    padding: 20px;
+  }
+  
+  .bids-grid,
+  .won-lots-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .deposit-controls {
+    flex-direction: column;
+  }
+  
+  .history-table,
+  .transactions-table {
+    font-size: 12px;
+  }
+  
+  .history-table th,
+  .history-table td,
+  .transactions-table th,
+  .transactions-table td {
+    padding: 10px 8px;
+  }
+}
